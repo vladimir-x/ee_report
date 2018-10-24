@@ -7,12 +7,12 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class HabrSimple {
+public class MultithreadSimple {
 
     public static void main(String[] args) throws Throwable {
 
 
-        ServerSocket ss = new ServerSocket(8081);
+        ServerSocket ss = new ServerSocket(8080);
         while (true) {
             System.err.println("ready...");
             Socket s = ss.accept();
@@ -46,7 +46,7 @@ public class HabrSimple {
                 }else {
                     reqIdent = request.substring(0,10);
                     System.err.println(">req : " + reqIdent);
-                    Thread.sleep(10000);
+                    //Thread.sleep(3000);
                     writeResponse("<html><body><h1>Hello from Habrahabr</h1></body></html>");
                 }
             } catch (Throwable t) {
@@ -83,7 +83,6 @@ public class HabrSimple {
                     break;
                 }
                 sb.append(s);
-                //System.err.println(">"+s);
             }
             return sb.toString();
         }
