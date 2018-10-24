@@ -47,7 +47,7 @@ public class MultithreadSimple {
                     reqIdent = request.substring(0,10);
                     System.err.println(">req : " + reqIdent);
                     //Thread.sleep(3000);
-                    writeResponse("<html><body><h1>Hello from Habrahabr</h1></body></html>");
+                    writeResponse("<html><body><h1>Hello from MultithreadSimple</h1></body></html>");
                 }
             } catch (Throwable t) {
                 /*do nothing*/
@@ -63,7 +63,7 @@ public class MultithreadSimple {
 
         private void writeResponse(String s) throws Throwable {
             String response = "HTTP/1.1 200 OK\r\n" +
-                    "Server: YarServer/2009-09-09\r\n" +
+                    "Server: MultithreadSimple\r\n" +
                     "Content-Type: text/html\r\n" +
                     "Content-Length: " + s.length() + "\r\n" +
                     "Connection: close\r\n\r\n";

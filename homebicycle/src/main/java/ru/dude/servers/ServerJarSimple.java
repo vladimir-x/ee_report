@@ -52,8 +52,6 @@ public class ServerJarSimple {
                 } else {
                     reqIdent = request.substring(0, 10);
                     System.err.println(">req : " + reqIdent);
-                    // Thread.sleep(2000);
-                    //writeResponse(request,"<html><body><h1>Hello from Habrahabr</h1></body></html>");
                     writeResponse(request, null);
                 }
             } catch (Throwable t) {
@@ -74,7 +72,7 @@ public class ServerJarSimple {
 
 
             String serverHead = "HTTP/1.1 200 OK\r\n" +
-                                "Server: YarServer/2009-09-09\r\n" +
+                                "Server: ServerJarSimple\r\n" +
                                 "Content-Type: text/html\r\n" +
                                 "Content-Length: " + resp.length() + "\r\n" +
                                 "Connection: close\r\n\r\n";
