@@ -11,7 +11,6 @@ public class MultithreadSimple {
 
     public static void main(String[] args) throws Throwable {
 
-
         ServerSocket ss = new ServerSocket(8080);
         while (true) {
             System.err.println("ready...");
@@ -46,7 +45,6 @@ public class MultithreadSimple {
                 }else {
                     reqIdent = request.substring(0,10);
                     System.err.println(">req : " + reqIdent);
-                    //Thread.sleep(3000);
                     writeResponse("<html><body><h1>Hello from MultithreadSimple</h1></body></html>");
                 }
             } catch (Throwable t) {
