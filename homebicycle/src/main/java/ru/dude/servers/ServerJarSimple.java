@@ -115,6 +115,8 @@ public class ServerJarSimple {
                     URLClassLoader urlClassLoader = new URLClassLoader(new URL[]{appJar.toURI().toURL()}, Servletus.class.getClassLoader());
 
                     Enumeration<JarEntry> entries = new JarFile(appJar).entries();
+                    String appName = appJar.getName().substring(0, appJar.getName().length() - ".jar".length());
+
                     while (entries.hasMoreElements()) {
                         JarEntry je = entries.nextElement();
                         String name = je.getName();
@@ -123,14 +125,13 @@ public class ServerJarSimple {
                             Class<?> clazz = urlClassLoader.loadClass(className);
 
                             if (Servletus.class.isAssignableFrom(clazz)) {
-                                System.out.println("loaded: " + className + " : " + clazz);
+                                System.out.println("loaded: /" + appName + "/" + clazz.getSimpleName());
                                 Servletus impl = (Servletus) clazz.newInstance();
                                 impl.init();
                                 appServletus.put(clazz.getSimpleName(), impl);
                             }
                         }
                     }
-                    String appName = appJar.getName().substring(0, appJar.getName().length() - ".jar".length());
                     apps.put(appName, appServletus);
                 }
             }
